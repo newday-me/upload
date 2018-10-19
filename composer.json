@@ -9,7 +9,9 @@
       "email": "newday_me@163.com"
     }
   ],
-  "require": {},
+  "require": {
+    "ralouphie/mimey": "1.0.8"
+  },
   "autoload": {
     "psr-4": {
       "newday\\upload\\": "src"

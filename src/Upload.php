@@ -140,22 +140,13 @@ class Upload implements UploadInterface
     protected function execHandler($handler, $info)
     {
         try {
-            if (is_null($handler)) {
-                return null;
-            } elseif ($handler instanceof \Closure) {
-                return $handler($info, $this);
-            }
-            if (strpos($handler, '::')) {
-                $handler = explode('::', $handler, 2);
+            if (is_callable($handler)) {
                 return call_user_func_array($handler, [
                     $info,
                     $this
                 ]);
             } else {
-                return call_user_func_array($handler, [
-                    $info,
-                    $this
-                ]);
+                return null;
             }
         } catch (\Exception $e) {
             return null;

@@ -101,7 +101,7 @@ class Upload implements UploadInterface
             if ($overwrite || !$storage->exists($path)) {
                 $storage->save($file, $path);
             }
-            $info['url'] = $storage->url($path);
+            $info->setUrl($storage->url($path));
         }
 
         // 上传成功
